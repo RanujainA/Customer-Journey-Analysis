@@ -46,9 +46,9 @@ def home_page(request):
             res = 'Unsatisfied'
         else:
             res = 'Satisfied'
-        return render(request, 'home_page.html', {'result':res})
+        return render(request, 'index.html', {'result':res})
     else:
-        return render(request, 'home_page.html')
+        return render(request, 'index.html')
 
 def about_page(request):
     return render(request, 'about_project.html')

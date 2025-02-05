@@ -1,0 +1,54 @@
+from django.shortcuts import render
+import pickle
+
+model = pickle.load(open('pickle_files/kmeans_model.pkl', 'rb'))
+scaler = pickle.load(open('pickle_files/scaler.pkl', 'rb'))
+pca = pickle.load(open('pickle_files/pca_model.pkl', 'rb'))
+
+# Create your views here.
+def home_page(request):
+    if request.method == 'POST':
+        age = int(request.POST.get('age'))
+        flight_distance = int(request.POST.get('flight_distance'))
+        wifi_service = int(request.POST.get('wifi_service'))
+        departure_convenience = int(request.POST.get('departure_convenience'))
+        online_booking = int(request.POST.get('online_booking'))
+        gate_location = int(request.POST.get('gate_location'))
+        food_drink = int(request.POST.get('food_drink'))
+        online_boarding = int(request.POST.get('online_boarding'))
+        seat_comfort = int(request.POST.get('seat_comfort'))
+        entertainment = int(request.POST.get('entertainment'))
+        onboard_service = int(request.POST.get('onboard_service'))
+        leg_room = int(request.POST.get('leg_room'))
+        baggage_handling = int(request.POST.get('baggage_handling'))
+        checkin_service = int(request.POST.get('checkin_service'))
+        inflight_service = int(request.POST.get('inflight_service'))
+        cleanliness = int(request.POST.get('cleanliness'))
+        departure_delay = int(request.POST.get('departure_delay'))
+        arrival_delay = float(request.POST.get('arrival_delay'))
+        Gender_Female = int(request.POST.get('Gender_Female'))
+        Gender_Male = int(request.POST.get('Gender_Male'))
+        Customer_Type_Loyal_Customer = int(request.POST.get('Customer_Type_Loyal_Customer'))
+        Customer_Type_disloyal_Customer = int(request.POST.get('Customer_Type_disloyal_Customer'))
+        Type_of_Travel_Business_travel = int(request.POST.get('Type_of_Travel_Business_travel'))
+        Type_of_Travel_Personal_Travel = int(request.POST.get('Type_of_Travel_Personal_Travel'))
+        Class_Business = int(request.POST.get('Class_Business'))
+        Class_Eco = int(request.POST.get('Class_Eco'))
+        Class_Eco_Plus = int(request.POST.get('Class_Eco_Plus'))
+        new_scaled_data = scaler.transform([[age, flight_distance, wifi_service, 
+                           departure_convenience, online_booking, gate_location, food_drink, online_boarding, 
+                           seat_comfort, entertainment, onboard_service, leg_room, baggage_handling, checkin_service, inflight_service, 
+                           cleanliness, departure_delay, arrival_delay, Gender_Female, Gender_Male, Customer_Type_Loyal_Customer, Customer_Type_disloyal_Customer, 
+                           Type_of_Travel_Business_travel, Type_of_Travel_Personal_Travel, Class_Business, Class_Eco, Class_Eco_Plus]])
+        new_pca_data = pca.transform(new_scaled_data)
+        res = model.predict(new_pca_data)
+        if res[0] == 0:
+            res = 'Unsatisfied'
+        else:
+            res = 'Satisfied'
+        return render(request, 'home_page.html', {'result':res})
+    else:
+        return render(request, 'home_page.html')
+
+def about_page(request):
+    return render(request, 'about_project.html')

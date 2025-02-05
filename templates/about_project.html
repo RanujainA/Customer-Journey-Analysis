@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project - Customer Journey Analysis</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <h1>Customer Journey Analysis using Clustering and Dimensionality Reduction</h1>
+            <a href="/">Home Page</a>
+        </div>  
+        <hr>
+        <div id="body">
+            <div class="section">
+                <h2>Introduction</h2>
+                <p>Airline customer satisfaction is crucial for enhancing passenger experience and improving service quality. 
+                   This project applies <span class="highlight">machine learning</span> techniques to analyze customer journeys, 
+                   identify satisfaction patterns, and provide insights for service improvement.</p>
+            </div>
+    
+            <div class="section">
+                <h2>Dataset Used</h2>
+                <p>We have utilized an <span class="highlight">airline customer satisfaction dataset</span> containing:</p>
+                <ul>
+                    <li><b>Demographic Data:</b> Gender, Age, Customer Type</li>
+                    <li><b>Travel Details:</b> Flight Distance, Type of Travel, Class</li>
+                    <li><b>Service Ratings (0-5):</b> Inflight Wi-Fi, Seat Comfort, Entertainment, Check-in Service, etc.</li>
+                    <li><b>Delays:</b> Departure and Arrival Delays</li>
+                </ul>
+            </div>
+    
+            <div class="section">
+                <h2>Project Workflow</h2>
+                <ul>
+                    <li><b>Data Preprocessing:</b> Cleaning, handling missing values, and standardization.</li>
+                    <li><b>Dimensionality Reduction:</b> <span class="highlight">PCA (Principal Component Analysis)</span> to reduce redundant features.</li>
+                    <li><b>Customer Segmentation:</b> <span class="highlight">K-Means clustering</span> to group passengers based on experience.</li>
+                    <li><b>Model Evaluation:</b> Used <span class="highlight">Accuracy Score</span> for validation.</li>
+                    <li><b>Visualization:</b> 2D scatter plots where:
+                        <span class="green">Green = Satisfied Customers</span>,
+                        <span class="red">Red = Dissatisfied Customers</span>.
+                    </li>
+                </ul>
+                <img src="/static/image/output.png">
+                <p>Observation:</p>
+                <p>Red Cluster in Plot indicates Unsatisfied Peoples.</p>
+                <p>Green Cluster in Plot indicates Satisfied Peoples.</p>
+                <p>If you observe that satisfied customers dominate higher PC1 values:
+                    
+                    "Principal Component 1 (PC1) represents a combination of features such as
+                    
+                    online booking ease, inflight services, and seat comfort etc. Higher PC1 values 
+                    
+                    correspond to satisfied customers, indicating that enhancing these features 
+                    
+                    could lead to higher satisfaction."</p>
+            </div>
+    
+            <div class="section">
+                <h2>Web Application & Deployment</h2>
+                <p>This project is deployed as a <span class="highlight">web application</span> allowing users to input travel details and predict their customer segment.</p>
+                <ul>
+                    <li><b>Frontend:</b> HTML form to collect user data.</li>
+                    <li><b>Backend:</b> Django API processing input, applying PCA & clustering.</li>
+                    <li><b>Deployment:</b> Hosted on <span class="highlight">AWS Elastic Beanstalk</span> for scalability.</li>
+                </ul>
+            </div>
+    
+            <div class="section">
+                <h2>Key Benefits</h2>
+                <ul>
+                    <li><span class="highlight">Personalized Customer Experience:</span> Tailors services based on customer segments.</li>
+                    <li><span class="highlight">Data-Driven Insights:</span> Identifies key factors affecting passenger satisfaction.</li>
+                    <li><span class="highlight">Scalability & Automation:</span> Real-time customer segmentation.</li>
+                </ul>
+            </div>
+    
+            <div class="section">
+                <h2>Conclusion</h2>
+                <p>This project demonstrates the power of <span class="highlight">machine learning</span> in improving airline customer experience. 
+                   By analyzing customer journeys, airlines can optimize services and enhance passenger satisfaction.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

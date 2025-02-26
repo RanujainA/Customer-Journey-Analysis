@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Journey Analysis</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="header">
+        <h1>Customer Journey Analysis using Clustering and Dimensionality Reduction</h1>
+        <a href="/about_project/">About Project</a>
+    </div>
+    <hr>
+    <div id="body">
+        <p>Note: Our analysis is based on an airline customer satisfaction dataset, which includes various factors such as inflight services, seat comfort, cleanliness, and travel experience. Using machine learning techniques like PCA and K-Means clustering, we segment customers to gain valuable insights into their journey and satisfaction levels.</p><br>
+        <form method="post">
+            {% csrf_token %}
+            <div id="age">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="1" required>
+            </div>
+
+            <div id="flight_distance">
+                <label for="flight_distance">Flight Distance:</label>
+                <input type="number" id="flight_distance" name="flight_distance" min="0" required>
+            </div>
+            
+            <div id="wifi">
+                <label for="wifi_service">Inflight Wi-Fi Service (0-5):</label>
+                <input type="number" id="wifi_service" name="wifi_service" min="0" max="5" required>
+            </div>
+            
+            <div id="departure">
+                <label for="departure_convenience">Departure/Arrival Time Convenience (0-5):</label>
+                <input type="number" id="departure_convenience" name="departure_convenience" min="0" max="5" required>
+            </div>
+            
+            <div id="onlinebooking">
+                <label for="online_booking">Ease of Online Booking (0-5):</label>
+                <input type="number" id="online_booking" name="online_booking" min="0" max="5" required>
+            </div>
+            
+            <div id="food_drink">
+                <label for="food_drink">Food & Drink (0-5):</label>
+                <input type="number" id="food_drink" name="food_drink" min="0" max="5" required>
+            </div>
+            
+            <div id="online_boarding">
+                <label for="online_boarding">Online Boarding (0-5):</label>
+                <input type="number" id="online_boarding" name="online_boarding" min="0" max="5" required>
+            </div>
+            
+            <div id="seat_comfort">
+                <label for="seat_comfort">Seat Comfort (0-5):</label>
+                <input type="number" id="seat_comfort" name="seat_comfort" min="0" max="5" required>
+            </div>
+            
+            <div id="entertainment">
+                <label for="entertainment">Inflight Entertainment (0-5):</label>
+                <input type="number" id="entertainment" name="entertainment" min="0" max="5" required>
+            </div>
+            
+            <div id="onboard_service">
+                <label for="onboard_service">On-board Service (0-5):</label>
+                <input type="number" id="onboard_service" name="onboard_service" min="0" max="5" required>
+            </div>
+            
+            <div id="leg_room">
+                <label for="leg_room">Leg Room Service (0-5):</label>
+                <input type="number" id="leg_room" name="leg_room" min="0" max="5" required>
+            </div>
+            
+            <div id="baggage_handling">
+                <label for="baggage_handling">Baggage Handling (0-5):</label>
+                <input type="number" id="baggage_handling" name="baggage_handling" min="0" max="5" required>
+            </div>
+            
+            <div id="checkin_service">
+                <label for="checkin_service">Check-in Service (0-5):</label>
+                <input type="number" id="checkin_service" name="checkin_service" min="0" max="5" required>
+            </div>
+            
+            <div id="inflight_service">
+                <label for="inflight_service">Inflight Service (0-5):</label>
+                <input type="number" id="inflight_service" name="inflight_service" min="0" max="5" required>
+            </div>
+            
+            <div id="cleanliness">
+                <label for="cleanliness">Cleanliness (0-5):</label>
+                <input type="number" id="cleanliness" name="cleanliness" min="0" max="5" required>
+            </div>
+            
+            <div id="departure_delay">
+                <label for="departure_delay">Departure Delay (Minutes):</label>
+                <input type="number" id="departure_delay" name="departure_delay" min="0" required>
+            </div>
+            
+            <div id="arrival_delay">
+                <label for="arrival_delay">Arrival Delay (Minutes):</label>
+                <input type="number" id="arrival_delay" name="arrival_delay" min="0" required>
+            </div>
+
+            <div id="gender">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div id="customer_type">
+                <label for="customer_type">Customer Type:</label>
+                <select id="customer_type" name="customer_type" required>
+                    <option value="Loyal Customer">Loyal Customer</option>
+                    <option value="Disloyal Customer">Disloyal Customer</option>
+                </select>
+            </div>
+
+            <div id="type_of_travel">
+                <label for="type_of_travel">Type of Travel:</label>
+                <select id="type_of_travel" name="type_of_travel" required>
+                    <option value="Business travel">Business Travel</option>
+                    <option value="Personal Travel">Personal Travel</option>
+                </select>
+            </div>
+
+            <div id="class">
+                <label for="class">Class:</label>
+                <select id="class" name="class" required>
+                    <option value="Business">Business</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Economy Plus">Economy Plus</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict Customer Cluster</button>
+        </form>
+        <div id="result">
+            {% if result != None %}
+                <h3 style="color:red">Passenger is {{result}}</h3>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div id="footer">
+        <h1>Project Done by Ranu Ashokkumar</h1>
+    </div>
+</body>
+</html>

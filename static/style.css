@@ -1,0 +1,90 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    color:white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.6;
+}
+#header{
+    max-height:120px;
+    display: flex;
+    gap:clamp(10px, 10vw, 200px);
+    align-items: center;
+    padding:20px;
+}
+#header a{
+    text-decoration: none;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: yellow;
+}
+#header a:hover{
+    color:gold;
+}
+#body{
+    padding: 20px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    max-width:1000px;
+    gap:50px;
+}
+input[type="text"], input[type="number"]{
+    width: 50%;
+    height:40px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    border-radius: 10px;
+}
+button{
+    min-height:50px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    border-radius: 5px;
+    max-width: 400px;
+    background-color:yellow;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#footer{
+    padding: 20px;
+    text-align: center;
+}
+.green{ 
+    color: green; 
+    font-weight: bold; 
+}
+.red{ 
+    color: red; 
+    font-weight: bold; 
+}
+ul{ 
+    padding-left: 20px; 
+}
+li{ 
+    margin-bottom: 8px; 
+    font-size: clamp(0.875rem, 2vw, 1.125rem)
+}
+.section{ 
+    margin-bottom: 30px; 
+}
+h1{ 
+    color: cyan;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+h2{
+    color:cyan;
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+}
+.highlight { 
+    color: coral; 
+    font-weight: bold;
+    font-size: clamp(0.875rem, 2vw, 1.125rem); 
+}
+#body img{
+    max-width: 500px;
+    max-height: 400px;
+}
+p, label{
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+}

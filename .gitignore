@@ -1,1 +1,4 @@
 CustomerJourneyAnalysis/settings.py
+manage.py
+application/__pycache__
+CustomerJourneyAnalysis/__pycache__/
